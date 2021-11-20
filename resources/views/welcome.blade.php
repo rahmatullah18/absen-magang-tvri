@@ -66,20 +66,20 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                    <a href="{{ url('/register') }}">Register</a>
-                </div>
+            @if (!Route::has('login'))
+            <div class="top-right links">
+                <a href="{{ url('/home') }}">home</a>
+            </div>
+            @else
+            <div class="top-right links">
+                <a href="{{ url('/login') }}">Login</a>
+                <a href="{{ url('/register') }}">Register</a>
+            </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Absensiku
-                </div>
-
-                <div class="links">
-                    <a href="https://fb.me/rizal.ofdraw">Rizal Khilman @Facebook</a>
+                    Absensi Magang TVRI
                 </div>
             </div>
         </div>

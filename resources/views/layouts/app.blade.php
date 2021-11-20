@@ -8,11 +8,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>TVRI ABSENSI MAGANG</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-
+    @yield('css')
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -36,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        TVRI ABSENSI MAGANG
                     </a>
                 </div>
 
@@ -59,17 +59,42 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @if(Auth::user()->level === "pembimbing")
+                                    <li><a href={{ url('/konfirmasi')}}>Konfirmasi Absen</a></li>
+                                    <li><a href={{ url('/profile')}}>Profile</a></li>
+                                    <li><a href={{ url('/users')}}>Users</a></li>
+                                    <li><a href={{ url('/changePassword')}}>Change Password</a></li>
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            <span class="text-danger">Logout</span>
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    @else
+                                    <li><a href={{ url('/home')}}>Absensi</a></li>
+                                    <li><a href={{ url('/profile')}}>Profile</a></li>
+                                    <li><a href={{ url('/changePassword')}}>Change Password</a></li>
+                                    <li>
+                                        <a href="{{ url('/logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                     <span class="text-danger">Logout</span>
+                                        </a>
+
+                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                    @endif
+                                    
+                                    
+                                    
+                                    
                                 </ul>
                             </li>
                         @endif
@@ -83,5 +108,6 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    @stack('scripts')
 </body>
 </html>
