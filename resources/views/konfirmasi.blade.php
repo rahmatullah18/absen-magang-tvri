@@ -31,9 +31,9 @@
                                             <form action="/konfirmasi" method="post">
                                                 {{csrf_field()}}
                                                 <select name="status" class="form-control" id="">
-                                                    <option value="" 
+                                                    <option disabled value="" 
                                                     @if($absen->status == "Belum Dikonfirmasi")
-                                                    selected="selected"
+                                                    selected="selected" 
                                                     @endif
                                                     >Belum Dikonfirmasi</option>
                                                     <option value="Hadir"
