@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index');
 Route::post('/absen', 'HomeController@absen');
 Route::get('/konfirmasi', 'HomeController@konfirmasi');
-Route::post('/konfirmasi', 'HomeController@status');
+Route::put('/konfirmasi', 'HomeController@status');
 
 
 Route::get('/profile', 'UserController@edit');

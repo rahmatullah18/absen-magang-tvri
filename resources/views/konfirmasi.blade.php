@@ -29,6 +29,7 @@
                                         <td>{{$absen->date}}</td>
                                         <td>
                                             <form action="/konfirmasi" method="post">
+                                                {{method_field('put')}}
                                                 {{csrf_field()}}
                                                 <select name="status" class="form-control" id="">
                                                     <option disabled value="" 
@@ -56,6 +57,7 @@
                                                     @endif>Terlambat</option>
                                                 </select>
                                                 <input type="hidden" name="user_id" value={{$absen->user_id}}>
+                                                <input type="hidden" name="date" value={{$absen->date}}>
                                                 <button type="submit" name="edit" class="btn btn-sm btn-block btn-primary">Edit</button>
                                             </form>
                                         </td>

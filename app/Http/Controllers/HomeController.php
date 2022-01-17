@@ -123,8 +123,10 @@ class HomeController extends Controller
 
     public function status(Request $request)
     {
+        // dd($request);
         $user_id = $request->user_id;
-        $absen = Absen::where(['user_id' => $user_id])->update([
+        $date = $request->date;
+        $absen = Absen::where(['user_id' =>  $user_id])->whereDate('date', $date)->update([
             'status' => $request->status,
         ]);
         return redirect()->back();
